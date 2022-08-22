@@ -2,9 +2,11 @@ package first_project;
 
 import java.util.Scanner;
 
-public class ATM_programme {
+public class ATMProgramme {
 
-    static double balance = 500.0;
+    static double balance = 500;
+    static int amounts;
+
 
     // start MENU
     public static void mainMenu() {
@@ -63,22 +65,24 @@ public class ATM_programme {
     // calculation of custom balance
     public static void customBalance() {
         Scanner input = new Scanner(System.in);
+        double initBalance = 500.0;
         double toDeduct;
+        double newBalance;
 
-        System.out.println("Your current balance is: " + balance + " PLN\n" +
+        System.out.println("Your current balance is: " + initBalance + " PLN\n" +
                 "Enter amount to withdraw: ");
         toDeduct = input.nextInt();
 
-        balance = balance - toDeduct;
+        newBalance = initBalance - toDeduct;
 
         if (toDeduct <= 0) {
             System.out.println("Invalid amount, try again");
             toDeduct = input.nextInt();
-        } else if (toDeduct > balance) {
+        } else if (toDeduct > initBalance) {
             System.out.println("Insufficient funds, enter a lower amount:");
             toDeduct = input.nextInt();
         } else {
-            System.out.println("Your current balance is: " + balance + " PLN\n\n" +
+            System.out.println("Your current balance is: " + newBalance + " PLN\n\n" +
                     "Press '0' to return to the main menu.");
         }
 
@@ -89,6 +93,7 @@ public class ATM_programme {
 
         Scanner input = new Scanner(System.in);
         int options = input.nextInt();
+        amounts = options;
         switch (options) {
             case 1 -> {
                 System.out.println("""
@@ -110,10 +115,15 @@ public class ATM_programme {
             case 2 -> {
                 setAmounts(8);
 
+//                System.out.println("""
+//                        Your balance is:\s
+//
+//                        500 PLN\s
+//
+//                        Press '0' to return to the main menu.
+//                        """);
                 if (input.nextInt() == 0) {
                     mainMenu();
-                } else if (input.nextInt() != 0) {
-                    System.out.println("Invalid choice, try again!");
                 }
             }
             case 3 -> System.out.println("See you again soon!\n\n");
@@ -128,53 +138,115 @@ public class ATM_programme {
     // withdraw MENU
     public static void withdraw() {
         Scanner input = new Scanner(System.in);
-        int amounts = input.nextInt();
         switch (amounts) {
             case 1 -> {
                 setAmounts(1);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 20 PLN
+//                         Your current balance is: 480 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 2 -> {
                 setAmounts(2);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 50 PLN
+//                         Your current balance is: 450 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 3 -> {
                 setAmounts(3);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 100 PLN
+//                         Your current balance is: 400 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 4 -> {
                 setAmounts(4);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 150 PLN
+//                         Your current balance is: 350 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 5 -> {
                 setAmounts(5);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 200 PLN
+//                         Your current balance is: 300 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 6 -> {
                 setAmounts(6);
-
+//                System.out.println("""
+//                         The transaction is being processed, please wait...
+//
+//                         You have withdrawn: 250 PLN
+//                         Your current balance is: 250 PLN
+//
+//                        - Goodbye
+//
+//                             Press '0' to return to the main menu.
+//                             """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
             }
             case 7 -> {
                 setAmounts(7);
-
+//                System.out.println("""
+//                        The transaction is being processed, please wait...
+//
+//                        You have withdrawn: 500 PLN
+//                        OOPS - you're broke!! Your current balance is: 0 PLN
+//
+//                        - Goodbye
+//
+//                            Press '0' to return to the main menu.
+//                            """);
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
