@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MusicCollection {
     public int menuChoices (){
+
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
         System.out.println("1. Position number:");
