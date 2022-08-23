@@ -56,8 +56,7 @@ public class ATMProgramme {
                         "Your current balance is: " + balance + " PLN");
                 break;
             case 8:
-                customBalance();
-//                System.out.println("Your current balance is: " + balance + " PLN");
+                System.out.println("Your current balance is: " + balance + " PLN");
                 break;
         }
         System.out.println("Press '0' to return to main menu.");
@@ -182,6 +181,7 @@ public class ATMProgramme {
             }
             case 8 -> {
                 customBalance();
+
                 if (input.nextInt() == 0) {
                     mainMenu();
                 }
