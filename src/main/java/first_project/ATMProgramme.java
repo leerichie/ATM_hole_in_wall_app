@@ -19,6 +19,7 @@ public class ATMProgramme {
     }
 
     public static void setAmounts(int choice) {
+
         switch (choice) {
             case 1:
                 balance = balance - 20.0;
@@ -91,7 +92,7 @@ public class ATMProgramme {
 
         Scanner input = new Scanner(System.in);
         int options = input.nextInt();
-        amounts = options;
+
         switch (options) {
             case 1 -> {
                 System.out.println("""
@@ -107,6 +108,7 @@ public class ATMProgramme {
                 if (input.nextInt() == 0) {
                     mainMenu();
                 } else {
+                    amounts = input.nextInt();
                     withdraw();
                 }
             }
