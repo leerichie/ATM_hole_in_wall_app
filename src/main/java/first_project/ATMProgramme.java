@@ -181,10 +181,7 @@ public class ATMProgramme {
         }
     }
 
-    // main
-
-    public static void main(String[] args) {
-
+    public static void pinEntry (){
         Scanner input = new Scanner(System.in);
         final int pin = 1234;
         int count = 3;
@@ -198,24 +195,27 @@ public class ATMProgramme {
                 System.out.println("Enter pin: ");
                 checkPin = input.nextInt();
             }
-
             if (checkPin == pin) {
 
                 System.out.println("* Welcome back! *\n");
                 mainMenu();
-
             } else {
                 count--;
                 System.out.println("Invalid pin, you have " + count + " tries remaining");
 
                 System.out.println("Enter pin: ");
                 checkPin = input.nextInt();
-
             }
 
             if (count == 0) {
                 System.out.println("Pin blocked");
             }
         }
+    }
+
+    // main
+    public static void main(String[] args) {
+
+        pinEntry();
     }
 }
