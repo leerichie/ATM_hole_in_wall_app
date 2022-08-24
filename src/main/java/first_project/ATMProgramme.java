@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class ATMProgramme {
 
+        // globally accessible variable - BALANCE
     static double balance = 500;
-    static int amounts;
 
 
     // start MENU
@@ -21,51 +21,59 @@ public class ATMProgramme {
     public static void setAmounts(int choice) {
 
         switch (choice) {
-            case 1:
+            case 1 -> {
                 balance = balance - 20.0;
                 System.out.println("You have withdrawn: 20.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 2:
+            }
+            case 2 -> {
                 balance = balance - 50.0;
                 System.out.println("You have withdrawn: 50.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 3:
+            }
+            case 3 -> {
                 balance = balance - 100.0;
                 System.out.println("You have withdrawn: 100.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 4:
+            }
+            case 4 -> {
                 balance = balance - 150.0;
                 System.out.println("You have withdrawn: 150.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 5:
+            }
+            case 5 -> {
                 balance = balance - 200.0;
                 System.out.println("You have withdrawn: 200.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 6:
+            }
+            case 6 -> {
                 balance = balance - 250.0;
                 System.out.println("You have withdrawn: 250.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 7:
+            }
+            case 7 -> {
                 balance = balance - 500;
                 System.out.println("You have withdrawn: 500.0 PLN \n" +
                         "Your current balance is: " + balance + " PLN");
-                break;
-            case 8:
-                System.out.println("Your current balance is: " + balance + " PLN");
-                break;
+            }
+            case 8 -> System.out.println("Your current balance is: " + balance + " PLN");
         }
-        System.out.println("Press '0' to return to main menu.");
-        if (choice == 0){
+        System.out.println("\nPress '0' to return to main menu.");{
+            returnToMainMenu();
+        }
+    }
+
+        // press 0 for main menu
+    public static void returnToMainMenu(){
+        Scanner input = new Scanner(System.in);
+        int returnMenu = input.nextInt();
+
+        if (returnMenu == 0){
             mainMenu();
-        } //else {
-            //System.out.println("Invalid choice, try again");
-      //  }
+        } else {
+            System.out.println("Invalid choice, try again!");
+            returnToMainMenu();
+        }
     }
 
     // calculation of custom balance
@@ -87,10 +95,9 @@ public class ATMProgramme {
             customBalance();
         } else {
             balance = balance - toDeduct;
-            System.out.println("Your current balance is: " + balance + " PLN\n\n" +
-                    "Press '0' to return to the main menu.");
+            System.out.println("Your current balance is: " + balance + " PLN\n\n");
+            returnToMainMenu();
         }
-
     }
 
     // options MENU
@@ -98,37 +105,13 @@ public class ATMProgramme {
 
         Scanner input = new Scanner(System.in);
         int options = input.nextInt();
-       // int withdrawChoice = 0 ;
+
         if (options == 1 || options == 2 || options == 3) {
             switch (options) {
-                case 1 -> {
-                        withdraw();
+                case 1 -> withdraw();
 
-//                    System.out.println("""
-//                            How much would you like to withdraw:\s
-//
-//                            1. 20      5. 200
-//                            2. 50      6. 250
-//                            3. 100     7. 500
-//                            4. 150     8. custom\s
-//
-//                            Press '0' to return to main menu.
-//                            """);
-                 //   amounts = input.nextInt();
-                 //   if (amounts == 0) {
-                  //      mainMenu();
-                 //   } else if (amounts > 0 && amounts < 9) {
-                      //  amounts = input.nextInt();
+                case 2 -> setAmounts(8);
 
-
-                }
-                case 2 -> {
-                    setAmounts(8);
-
-                   // if (input.nextInt() == 0) {
-                   //     mainMenu();
-                 //   }
-                }
                 case 3 -> System.out.println("See you again soon!\n\n");
 
                 case 0 -> mainMenu();
@@ -145,7 +128,6 @@ public class ATMProgramme {
         }
     }
 
-
     // withdraw MENU
     public static void withdraw() {
         System.out.println("""
@@ -160,63 +142,41 @@ public class ATMProgramme {
                             """);
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
-        if (choice == 0) { mainMenu();}
+        if (choice == 0) {
+            mainMenu();
+        }
         switch (choice) {
             case 1 -> {
                 setAmounts(1);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 2 -> {
                 setAmounts(2);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 3 -> {
                 setAmounts(3);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 4 -> {
                 setAmounts(4);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 5 -> {
                 setAmounts(5);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 6 -> {
                 setAmounts(6);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 7 -> {
                 setAmounts(7);
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
             case 8 -> {
                 customBalance();
-
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                }
+                returnToMainMenu();
             }
         }
     }
