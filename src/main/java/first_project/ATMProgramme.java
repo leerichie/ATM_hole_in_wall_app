@@ -61,6 +61,11 @@ public class ATMProgramme {
                 break;
         }
         System.out.println("Press '0' to return to main menu.");
+        if (choice == 0){
+            mainMenu();
+        } //else {
+            //System.out.println("Invalid choice, try again");
+      //  }
     }
 
     // calculation of custom balance
@@ -72,15 +77,16 @@ public class ATMProgramme {
                 "Enter amount to withdraw: ");
         toDeduct = input.nextInt();
 
-        balance = balance - toDeduct;
-
         if (toDeduct <= 0) {
             System.out.println("Invalid amount, try again");
-            toDeduct = input.nextInt();
+            // toDeduct = input.nextInt();
+            customBalance();
         } else if (toDeduct > balance) {
             System.out.println("Insufficient funds, enter a lower amount:");
-            toDeduct = input.nextInt();
+            //toDeduct = input.nextInt();
+            customBalance();
         } else {
+            balance = balance - toDeduct;
             System.out.println("Your current balance is: " + balance + " PLN\n\n" +
                     "Press '0' to return to the main menu.");
         }
@@ -92,46 +98,70 @@ public class ATMProgramme {
 
         Scanner input = new Scanner(System.in);
         int options = input.nextInt();
+       // int withdrawChoice = 0 ;
+        if (options == 1 || options == 2 || options == 3) {
+            switch (options) {
+                case 1 -> {
+                        withdraw();
 
-        switch (options) {
-            case 1 -> {
-                System.out.println("""
-                        How much would you like to withdraw:\s
+//                    System.out.println("""
+//                            How much would you like to withdraw:\s
+//
+//                            1. 20      5. 200
+//                            2. 50      6. 250
+//                            3. 100     7. 500
+//                            4. 150     8. custom\s
+//
+//                            Press '0' to return to main menu.
+//                            """);
+                 //   amounts = input.nextInt();
+                 //   if (amounts == 0) {
+                  //      mainMenu();
+                 //   } else if (amounts > 0 && amounts < 9) {
+                      //  amounts = input.nextInt();
 
-                        1. 20      5. 200
-                        2. 50      6. 250
-                        3. 100     7. 500
-                        4. 150     8. custom\s
 
-                        Press '0' to return to main menu.
-                        """);
-                if (input.nextInt() == 0) {
-                    mainMenu();
-                } else {
-                    amounts = input.nextInt();
-                    withdraw();
                 }
-            }
-            case 2 -> {
-                setAmounts(8);
+                case 2 -> {
+                    setAmounts(8);
 
-                if (input.nextInt() == 0) {
+                   // if (input.nextInt() == 0) {
+                   //     mainMenu();
+                 //   }
+                }
+                case 3 -> System.out.println("See you again soon!\n\n");
+
+                case 0 -> mainMenu();
+                default -> {
+                    System.out.println("Invalid choice, please try again.\n\n");
                     mainMenu();
                 }
+
             }
-            case 3 -> System.out.println("See you again soon!\n\n");
-            case 0 -> mainMenu();
-            default -> {
-                System.out.println("Invalid choice, please try again.\n\n");
-                mainMenu();
-            }
+        }
+        else {
+            System.out.println("Invalid choice, choose an option from 1 to 3\n");
+            mainMenu();
         }
     }
 
+
     // withdraw MENU
     public static void withdraw() {
+        System.out.println("""
+                            How much would you like to withdraw:\s
+
+                            1. 20      5. 200
+                            2. 50      6. 250
+                            3. 100     7. 500
+                            4. 150     8. custom\s
+
+                            Press '0' to return to main menu.
+                            """);
         Scanner input = new Scanner(System.in);
-        switch (amounts) {
+        int choice = input.nextInt();
+        if (choice == 0) { mainMenu();}
+        switch (choice) {
             case 1 -> {
                 setAmounts(1);
 
